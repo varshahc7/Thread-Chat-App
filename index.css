@@ -1,0 +1,24 @@
+@import '@fontsource-variable/manrope';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: 240 243 245; --surface: 255 255 255; --raised: 232 237 240; --line: 217 224 229;
+  --ink: 19 32 43; --muted: 100 116 128; --accent: 15 118 110; --accent-fg: 255 255 255;
+  --out: 15 118 110; --out-fg: 255 255 255; --inb: 255 255 255;
+}
+.dark {
+  --bg: 13 19 23; --surface: 20 28 33; --raised: 30 41 48; --line: 42 55 64;
+  --ink: 230 237 241; --muted: 140 157 168; --accent: 45 212 191; --accent-fg: 8 30 28;
+  --out: 17 94 89; --out-fg: 240 253 250; --inb: 30 41 48;
+}
+html, body, #root { height: 100%; }
+body { @apply bg-bg text-ink font-sans antialiased; overscroll-behavior: none; }
+*:focus-visible { @apply outline-none ring-2 ring-accent ring-offset-2 ring-offset-surface; }
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-thumb { @apply rounded-full bg-line; }
+.skeleton { @apply relative overflow-hidden rounded-md bg-raised; }
+.skeleton::after { content: ''; @apply absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/30 to-transparent; animation: shimmer 1.3s infinite; }
+@media (prefers-reduced-motion: reduce) { *, ::before, ::after { animation-duration: .01ms !important; transition-duration: .01ms !important; } }
+.h-dvh { height: 100dvh; }
